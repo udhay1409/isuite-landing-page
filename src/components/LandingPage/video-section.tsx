@@ -17,6 +17,9 @@ import { useState } from "react";
 import type React from "react";
 import { BorderBeam } from "@/components/ui/border-beam";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://admin.isuite.io/api/automations/68bbd5777817b/execute";
+const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN || "df3bf939158c12fc20d7f622337374f8";
+
 export default function VideoSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -34,14 +37,14 @@ export default function VideoSection() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://admin.isuite.io/api/automations/68bbd5777817b/execute', {
+      const response = await fetch( API_URL , {
         method: 'POST',
         headers: {
           'accept': 'application/json',
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          api_token: "df3bf939158c12fc20d7f622337374f8",
+          api_token: API_TOKEN,
           contact_name: formData.name,
           contact_email: formData.email,
           contact_phone: formData.phone
