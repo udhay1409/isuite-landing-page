@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+
 import {
   Rocket,
   FileSpreadsheet,
@@ -130,9 +130,7 @@ const Feature = ({
   title,
   description,
   icon,
-  index,
-  path,
-  total,
+
 }: {
   title: string;
   description: string;

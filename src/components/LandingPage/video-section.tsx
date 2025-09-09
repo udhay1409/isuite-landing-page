@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Play, X } from "lucide-react"
+import { Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogOverlay } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
