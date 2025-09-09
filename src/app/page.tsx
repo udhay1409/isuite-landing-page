@@ -3,6 +3,8 @@ import VideoSection from "@/components/LandingPage/video-section";
 import FeaturesSection from "@/components/LandingPage/features";
 import TestimonialsSection from "@/components/LandingPage/testimonials-section";
 import RadialFlowDemo from "@/components/LandingPage/isuite-flow";
+import BookDemo from "@/components/ui/bookDemo";
+
 
 export default function Home() {
   return (
@@ -20,11 +22,16 @@ export default function Home() {
         </div>
         <div className="w-full max-w-7xl ">
           <VideoSection />
-          
+          <div className="col-span-full mt-5 flex justify-center items-center">
+            <BookDemo />
+          </div>
         </div>
 
-        <div className="w-full  flex items-center justify-center py-10">
+        <div className="w-full   items-center justify-center">
           <RadialFlowDemo />
+          <div className="col-span-full mt-5 flex justify-center items-center">
+            <BookDemo />
+          </div>
         </div>
         <div className="w-full max-w-7xl">
           <FeaturesSection />
