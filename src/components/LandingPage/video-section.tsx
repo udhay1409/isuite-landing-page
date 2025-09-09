@@ -12,21 +12,61 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
 import { useState } from "react";
 import type React from "react";
 import { BorderBeam } from "@/components/ui/border-beam";
-import BookDemo from "../ui/bookDemo";
 
 export default function VideoSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.phone) {
-      setIsModalOpen(false);
-      setIsVideoPlaying(true);
+    
+    if (!formData.name || !formData.email || !formData.phone) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('https://admin.isuite.io/api/automations/68bbd5777817b/execute', {
+        method: 'POST',
+        headers: {
+          'accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          api_token: "df3bf939158c12fc20d7f622337374f8",
+          contact_name: formData.name,
+          contact_email: formData.email,
+          contact_phone: formData.phone
+        })
+      });
+
+      if (response.ok) {
+        // Success - show toast and play video
+        toast.success("Registration successful! Enjoy the demo video.");
+        setIsModalOpen(false);
+        setIsVideoPlaying(true);
+        
+        // Reset form data
+        setFormData({ name: "", email: "", phone: "" });
+      } else {
+        // Handle API error
+        const errorData = await response.json().catch(() => null);
+        toast.error(errorData?.message || "Registration failed. Please try again.");
+      }
+    } catch (error) {
+      // Handle network error
+      console.error('API Error:', error);
+      toast.error("Network error. Please check your connection and try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -86,7 +126,7 @@ export default function VideoSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ"
+                src="https://www.youtube.com/embed/xSTcMOgTEqc?si=nBBSHym32TP_ijtF&amp;&autoplay=1"
                 title="Product Demo"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -100,7 +140,7 @@ export default function VideoSection() {
                 className="flex items-center justify-center w-full h-full bg-gradient-to-br from-gray-900/90 to-gray-900/80 backdrop-blur-sm"
               >
                 <div
-                  className="flex flex-col items-center gap-6"
+                  className="flex flex-col items-center gap-6 cursor-pointer"
                   onClick={() => setIsModalOpen(true)}
                 >
                   <motion.div
@@ -184,6 +224,7 @@ export default function VideoSection() {
                   setFormData({ ...formData, name: e.target.value })
                 }
                 className="w-full rounded-lg border border-gray-200 bg-white/80 p-3 text-gray-900 shadow-sm backdrop-blur-sm transition-all duration-300 placeholder:text-gray-400 focus:border-[#e63ca3] focus:outline-none focus:ring-2 focus:ring-[#e63ca3]/20 dark:border-gray-800 dark:bg-gray-900/80 dark:text-white dark:placeholder:text-gray-500"
+                disabled={isLoading}
                 required
               />
             </motion.div>
@@ -209,6 +250,7 @@ export default function VideoSection() {
                   setFormData({ ...formData, email: e.target.value })
                 }
                 className="w-full rounded-lg border border-gray-200 bg-white/80 p-3 text-gray-900 shadow-sm backdrop-blur-sm transition-all duration-300 placeholder:text-gray-400 focus:border-[#e63ca3] focus:outline-none focus:ring-2 focus:ring-[#e63ca3]/20 dark:border-gray-800 dark:bg-gray-900/80 dark:text-white dark:placeholder:text-gray-500"
+                disabled={isLoading}
                 required
               />
             </motion.div>
@@ -234,6 +276,7 @@ export default function VideoSection() {
                   setFormData({ ...formData, phone: e.target.value })
                 }
                 className="w-full rounded-lg border border-gray-200 bg-white/80 p-3 text-gray-900 shadow-sm backdrop-blur-sm transition-all duration-300 placeholder:text-gray-400 focus:border-[#e63ca3] focus:outline-none focus:ring-2 focus:ring-[#e63ca3]/20 dark:border-gray-800 dark:bg-gray-900/80 dark:text-white dark:placeholder:text-gray-500"
+                disabled={isLoading}
                 required
               />
             </motion.div>
@@ -245,7 +288,8 @@ export default function VideoSection() {
             >
               <Button
                 type="submit"
-                className="relative cursor-pointer w-full overflow-hidden rounded-lg bg-gradient-to-r from-[#e63ca3] to-[#a91ac1] px-4 xs:px-6 py-3 xs:py-4 text-sm xs:text-base font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl"
+                disabled={isLoading}
+                className="relative cursor-pointer w-full overflow-hidden rounded-lg bg-gradient-to-r from-[#e63ca3] to-[#a91ac1] px-4 xs:px-6 py-3 xs:py-4 text-sm xs:text-base font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
@@ -253,7 +297,7 @@ export default function VideoSection() {
                   transition={{ duration: 0.3, delay: 0.6 }}
                   className="relative z-10"
                 >
-                  Watch Demo Video
+                  {isLoading ? "Submitting..." : "Watch Demo Video"}
                 </motion.span>
                 <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#e63ca3]/90 to-[#a91ac1]/90 opacity-0 transition-opacity duration-300 hover:opacity-100" />
               </Button>
