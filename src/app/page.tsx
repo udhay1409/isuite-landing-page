@@ -1,8 +1,8 @@
-import HeroSection from '@/components/LandingPage/hero-section';
-import VideoSection from '@/components/LandingPage/video-section';
-import FeaturesSection from '@/components/LandingPage/features';
-import TestimonialsSection from '@/components/LandingPage/testimonials-section';
-
+import HeroSection from "@/components/LandingPage/hero-section";
+import VideoSection from "@/components/LandingPage/video-section";
+import FeaturesSection from "@/components/LandingPage/features";
+import TestimonialsSection from "@/components/LandingPage/testimonials-section";
+import RadialFlowDemo from "@/components/LandingPage/isuite-flow";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
       <div className="fixed -left-40 -top-40 h-[500px] w-[500px] rounded-full bg-purple-200 opacity-20 blur-[100px] filter dark:bg-purple-900" />
       <div className="fixed -right-40 -bottom-40 h-[500px] w-[500px] rounded-full bg-blue-200 opacity-20 blur-[100px] filter dark:bg-blue-900" />
-      
+
       {/* Content */}
       <div className="relative z-10 mx-auto flex  w-full flex-col items-center justify-start">
         <div className="w-full max-w-7xl">
@@ -22,8 +22,11 @@ export default function Home() {
           <VideoSection />
           
         </div>
-        <div className="w-full max-w-7xl ">
-          
+
+        <div className="w-full  flex items-center justify-center py-10">
+          <RadialFlowDemo />
+        </div>
+        <div className="w-full max-w-7xl">
           <FeaturesSection />
         </div>
         <div className="w-full max-w-7xl ">

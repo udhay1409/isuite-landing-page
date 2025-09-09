@@ -1,30 +1,36 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Play } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogOverlay } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { useState } from "react"
-import type React from "react"
-
+import { motion } from "framer-motion";
+import { Play } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogOverlay,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import type React from "react";
+import { BorderBeam } from "@/components/ui/border-beam";
+import BookDemo from "../ui/bookDemo";
 
 export default function VideoSection() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "" })
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
 
   const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (formData.name && formData.email && formData.phone) {
-      setIsModalOpen(false)
-      setIsVideoPlaying(true)
+      setIsModalOpen(false);
+      setIsVideoPlaying(true);
     }
-  }
+  };
 
   return (
-
     <motion.div
       initial={{
         opacity: 0,
@@ -40,29 +46,38 @@ export default function VideoSection() {
       }}
       className="relative z-10 rounded-xl xs:rounded-2xl sm:rounded-3xl border border-neutral-200 bg-white/50 p-2 xs:p-3 sm:p-4 shadow-lg sm:shadow-xl backdrop-blur-sm dark:border-neutral-800 dark:bg-neutral-900/50 overflow-hidden mx-auto max-w-[280px] xs:max-w-sm sm:max-w-2xl md:max-w-4xl lg:max-w-6xl"
     >
+      
+      <BorderBeam
+        size={300}
+        duration={30}
+        delay={0}
+        colorFrom="#e63ca3"
+        colorTo="#a91ac1"
+        borderWidth={4}
+      />
       <div className="group relative z-10 w-full overflow-hidden rounded-lg xs:rounded-xl sm:rounded-2xl border border-[#e63ca3]/30 bg-gradient-to-br from-[#e63ca3]/5 to-[#a91ac1]/5 shadow-lg sm:shadow-xl backdrop-blur-sm transition-all duration-500 hover:border-[#e63ca3]/50 hover:shadow-2xl dark:border-[#e63ca3]/30 dark:from-[#e63ca3]/10 dark:to-[#a91ac1]/10 dark:hover:border-[#e63ca3]/50">
         {/* Multi-layer gradient effects */}
         <div className="absolute inset-0">
           {/* Base gradient layer */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#e63ca3]/5 to-[#a91ac1]/5 opacity-0 transition-all duration-700 ease-out group-hover:opacity-100" />
-          
+
           {/* Animated shine effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:animate-shine" />
-          
+
           {/* Radial gradient overlay */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(230,60,163,0.15),transparent_70%)] opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-700 ease-out" />
-          
+
           {/* Interactive corner highlights */}
           <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-[#e63ca3]/20 via-[#e63ca3]/5 to-transparent opacity-0 -translate-x-full -translate-y-full group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-700 ease-out rounded-br-full" />
           <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-tl from-[#a91ac1]/20 via-[#a91ac1]/5 to-transparent opacity-0 translate-x-full translate-y-full group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-700 ease-out rounded-tl-full" />
-          
+
           {/* Pulsing glow effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#e63ca3]/10 to-[#a91ac1]/10 opacity-0 group-hover:animate-pulse mix-blend-overlay" />
-          
+
           {/* Edge highlight effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#e63ca3]/5 to-[#a91ac1]/5 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out border-2 border-white/10 rounded-lg xs:rounded-xl sm:rounded-2xl" />
         </div>
-        
+
         <div className="relative w-full aspect-video">
           <div className="absolute inset-0 flex items-center justify-center">
             {isVideoPlaying ? (
@@ -78,13 +93,16 @@ export default function VideoSection() {
                 allowFullScreen
               />
             ) : (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
                 className="flex items-center justify-center w-full h-full bg-gradient-to-br from-gray-900/90 to-gray-900/80 backdrop-blur-sm"
               >
-                <div className="flex flex-col items-center gap-6" onClick={() => setIsModalOpen(true)}>
+                <div
+                  className="flex flex-col items-center gap-6"
+                  onClick={() => setIsModalOpen(true)}
+                >
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -96,7 +114,7 @@ export default function VideoSection() {
                     </div>
                   </motion.div>
                   <div className="space-y-1 xs:space-y-2 text-center">
-                    <motion.p 
+                    <motion.p
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
@@ -104,14 +122,15 @@ export default function VideoSection() {
                     >
                       Watch Product Demo
                     </motion.p>
-                  
                   </div>
                 </div>
               </motion.div>
             )}
           </div>
         </div>
+      
       </div>
+      
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
         <DialogOverlay className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
@@ -119,8 +138,8 @@ export default function VideoSection() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-30 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]" />
           <div className="absolute -left-32 -top-32 h-[300px] xs:h-[400px] w-[300px] xs:w-[400px] rounded-full bg-[#e63ca3]/10 blur-[100px]" />
           <div className="absolute -right-32 -bottom-32 h-[300px] xs:h-[400px] w-[300px] xs:w-[400px] rounded-full bg-[#a91ac1]/10 blur-[100px]" />
-          
-          <DialogHeader className="relative pb-3 xs:pb-4 sm:pb-6 mb-1 xs:mb-2">
+
+          <DialogHeader className="relative ">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -136,21 +155,24 @@ export default function VideoSection() {
               </DialogTitle>
             </motion.div>
           </DialogHeader>
-          
-          <motion.form 
+
+          <motion.form
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            onSubmit={handleFormSubmit} 
+            onSubmit={handleFormSubmit}
             className="relative mt-2 space-y-5"
           >
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               className="space-y-2"
             >
-              <Label htmlFor="name" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              <Label
+                htmlFor="name"
+                className="text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
                 Name
               </Label>
               <Input
@@ -158,19 +180,24 @@ export default function VideoSection() {
                 type="text"
                 placeholder="Enter your name"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 className="w-full rounded-lg border border-gray-200 bg-white/80 p-3 text-gray-900 shadow-sm backdrop-blur-sm transition-all duration-300 placeholder:text-gray-400 focus:border-[#e63ca3] focus:outline-none focus:ring-2 focus:ring-[#e63ca3]/20 dark:border-gray-800 dark:bg-gray-900/80 dark:text-white dark:placeholder:text-gray-500"
                 required
               />
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               className="space-y-2"
             >
-              <Label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              <Label
+                htmlFor="email"
+                className="text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
                 Email
               </Label>
               <Input
@@ -178,19 +205,24 @@ export default function VideoSection() {
                 type="email"
                 placeholder="Enter your email"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 className="w-full rounded-lg border border-gray-200 bg-white/80 p-3 text-gray-900 shadow-sm backdrop-blur-sm transition-all duration-300 placeholder:text-gray-400 focus:border-[#e63ca3] focus:outline-none focus:ring-2 focus:ring-[#e63ca3]/20 dark:border-gray-800 dark:bg-gray-900/80 dark:text-white dark:placeholder:text-gray-500"
                 required
               />
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
               className="space-y-2"
             >
-              <Label htmlFor="phone" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              <Label
+                htmlFor="phone"
+                className="text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
                 Phone Number
               </Label>
               <Input
@@ -198,12 +230,14 @@ export default function VideoSection() {
                 type="tel"
                 placeholder="Enter your phone number"
                 value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
+                }
                 className="w-full rounded-lg border border-gray-200 bg-white/80 p-3 text-gray-900 shadow-sm backdrop-blur-sm transition-all duration-300 placeholder:text-gray-400 focus:border-[#e63ca3] focus:outline-none focus:ring-2 focus:ring-[#e63ca3]/20 dark:border-gray-800 dark:bg-gray-900/80 dark:text-white dark:placeholder:text-gray-500"
                 required
               />
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -227,6 +261,8 @@ export default function VideoSection() {
           </motion.form>
         </DialogContent>
       </Dialog>
+
+      
     </motion.div>
-  )
+  );
 }
