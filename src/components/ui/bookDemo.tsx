@@ -24,7 +24,7 @@ const BookDemo = ({ className = "" }: BookDemoProps) => {
       variants={buttonVariants}
       whileHover="hover"
       whileTap="tap"
-      className={`rounded-full border-1 border-white bg-gradient-to-r from-[#e63ca3] to-[#a91ac1]   px-5 sm:px-5 py-2 sm:py-2 text-base sm:text-lg font-semibold text-white transition-all hover:opacity-90 hover:shadow-lg inline-block text-center cursor-pointer ${className}`}
+      className={`rounded-full border-1 border-white bg-gradient-to-r from-[#e63ca3] to-[#a91ac1]   px-7 sm:px-9 py-2 sm:py-3 text-base sm:text-lg font-semibold text-white transition-all hover:opacity-90 hover:shadow-lg inline-block text-center cursor-pointer ${className}`}
     >
       Book Demo
     </motion.a>

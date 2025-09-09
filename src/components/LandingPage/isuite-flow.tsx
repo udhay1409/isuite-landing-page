@@ -98,7 +98,7 @@ export default function RadialFlowDemo() {
         centralDotColor="transparent"
       />
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
-        <div className="bg-[#1e1b4b] rounded-full p-2 sm:p-3 md:p-4 shadow-lg shadow-purple-500/20">
+        <div className="bg-[#ffffff] rounded-full border border-admin-primary-color p-2 sm:p-3 md:p-4 shadow-lg shadow-purple-500/20">
           <Image
             src="/isuite-org.png"
             alt="iSuite Logo"
