@@ -1,10 +1,12 @@
 import HeroSection from "@/components/LandingPage/hero-section";
 import VideoSection from "@/components/LandingPage/video-section";
-import FeaturesSection from "@/components/LandingPage/features";
+// import FeaturesSection from "@/components/LandingPage/features";
 import TestimonialsSection from "@/components/LandingPage/testimonials-section";
 import RadialFlowDemo from "@/components/LandingPage/isuite-flow";
 import BookDemo from "@/components/ui/bookDemo";
+import {Services} from "@/components/LandingPage/services"
 
+import SparklesPreview from "@/components/LandingPage/sparkles-demo";
 
 export default function Home() {
   return (
@@ -29,15 +31,23 @@ export default function Home() {
 
         <div className="w-full   items-center justify-center">
           <RadialFlowDemo />
-          <div className="col-span-full mt-5 flex justify-center items-center">
+          <div className="col-span-full mt-8 flex justify-center items-center">
             <BookDemo />
           </div>
         </div>
-        <div className="w-full max-w-7xl">
+        {/* <div className="w-full max-w-7xl">
           <FeaturesSection />
+        </div> */}
+        <div className="w-full max-w-7xl">
+          <Services />
         </div>
+
         <div className="w-full max-w-7xl ">
           <TestimonialsSection />
+        </div>
+
+        <div className="w-full ">
+          <SparklesPreview />
         </div>
       </div>
     </div>
