@@ -84,14 +84,18 @@ const demoTopics: Topic[] = [
     position: { x: 80, y: 100 },
     color: "#a91ac1",
     highlighted: true,
-  }
+  },
 ];
 
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function RadialFlowDemo() {
   return (
     <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px]">
+      
+
+      
+
       <RadialFlow
         topics={demoTopics}
         badgeName=""

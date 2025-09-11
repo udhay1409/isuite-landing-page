@@ -1,11 +1,11 @@
 import HeroSection from "@/components/LandingPage/hero-section";
 import VideoSection from "@/components/LandingPage/video-section";
 // import FeaturesSection from "@/components/LandingPage/features";
-import TestimonialsSection from "@/components/LandingPage/testimonials-section";
+// import TestimonialsSection from "@/components/LandingPage/testimonials-section";
 import RadialFlowDemo from "@/components/LandingPage/isuite-flow";
 import BookDemo from "@/components/ui/bookDemo";
 import {Services} from "@/components/LandingPage/services"
-
+import KineticTestimonialDemo from "@/components/LandingPage/kinetik-testimonials";
 import SparklesPreview from "@/components/LandingPage/sparkles-demo";
 
 export default function Home() {
@@ -41,9 +41,13 @@ export default function Home() {
         <div className="w-full max-w-7xl">
           <Services />
         </div>
-
+{/* 
         <div className="w-full max-w-7xl ">
           <TestimonialsSection />
+        </div> */}
+
+        <div className="w-full max-w-7xl ">
+          <KineticTestimonialDemo />
         </div>
 
         <div className="w-full ">
