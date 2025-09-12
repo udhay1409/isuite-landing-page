@@ -150,7 +150,7 @@ export default function VideoSection() {
                       <Play className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 text-white ml-0.5 xs:ml-1" />
                     </div>
                   </motion.div>
-                  <div className="space-y-1 xs:space-y-2 text-center">
+                  {/* <div className="space-y-1 xs:space-y-2 text-center">
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -159,7 +159,7 @@ export default function VideoSection() {
                     >
                       Unlock the Demo
                     </motion.p>
-                  </div>
+                  </div> */}
                 </div>
               </motion.div>
             )}

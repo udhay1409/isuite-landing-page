@@ -324,14 +324,14 @@ const KineticTestimonial: React.FC<KineticTestimonialProps> = ({
           <div 
             className="absolute top-0 left-0 right-0 h-16 z-10 pointer-events-none"
             style={{
-              background: 'linear-gradient(to bottom, #f9fafb, transparent)'
+              background: 'linear-gradient(to bottom, #ffffff, transparent)'
             }}
           />
           {/* Bottom fade */}
           <div 
             className="absolute bottom-0 left-0 right-0 h-16 z-10 pointer-events-none"
             style={{
-              background: 'linear-gradient(to top, #f9fafb, transparent)'
+              background: 'linear-gradient(to top, #ffffff, transparent)'
             }}
           />
           
