@@ -7,10 +7,11 @@ import BookDemo from "@/components/ui/bookDemo";
 import {Services} from "@/components/LandingPage/services"
 import KineticTestimonialDemo from "@/components/LandingPage/kinetik-testimonials";
 import SparklesPreview from "@/components/LandingPage/sparkles-demo";
+import Footer from "@/components/footer/Footer";
 
 export default function Home() {
   return (
-    <div className="relative w-full overflow-hidden p-3">
+    <div className="relative w-full overflow-hidden ">
       {/* Background Elements */}
       <div className="fixed inset-0 bg-gradient-to-br from-purple-50/80 via-white/90 to-blue-50/80 dark:from-gray-900/80 dark:via-gray-900/90 dark:to-gray-800/80" />
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
@@ -53,6 +54,13 @@ export default function Home() {
         <div className="w-full ">
           <SparklesPreview />
         </div>
+
+
+        <div className="w-full p-0">
+        <Footer />
+        </div>
+
+        
       </div>
     </div>
   );

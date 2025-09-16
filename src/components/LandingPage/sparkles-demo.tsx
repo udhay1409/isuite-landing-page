@@ -11,7 +11,6 @@ export default function SparklesPreview() {
         alt="iSuite.org"
         width={200}
         height={50}
-        className="w-auto"
       />
       <div className="w-full h-20 relative">
         {/* Gradients */}

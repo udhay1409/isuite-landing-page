@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 
+
 export default function HeroSection() {
   return (
     <div className="relative flex w-full flex-col items-center justify-center">
