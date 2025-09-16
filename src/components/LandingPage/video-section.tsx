@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, MousePointerClick } from "lucide-react";
+import { GiClick } from "react-icons/gi";
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import {
@@ -16,7 +18,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { useState } from "react";
 import type React from "react";
-import { BorderBeam } from "@/components/ui/border-beam";
+import { BorderBeam } from "@/components/ui/border-beam"; 
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ||
@@ -137,29 +139,26 @@ export default function VideoSection() {
                 className="flex items-center justify-center w-full h-full "
               >
                 <div
-                  className="flex flex-col items-center gap-6 cursor-pointer"
+                  className="flex flex-col items-center gap-6 cursor-pointer group/button"
                   onClick={() => setIsModalOpen(true)}
                 >
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="group/play relative w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-r from-[#e63ca3] to-[#a91ac1] p-0.5 xs:p-1"
+                    className="group/play relative w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-r from-[#e63ca3] to-[#a91ac1] p-0.5 xs:p-1 hover:shadow-2xl transition-all duration-300"
                   >
-                    <div className="absolute inset-0 rounded-full   bg-gradient-to-r from-[#ffffff] to-[#e7e2e2] transition-opacity duration-500 group-hover/play:opacity-100" />
-                    <div className="relative cursor-pointer h-full w-full rounded-full bg-gradient-to-r from-[#e63ca3] to-[#a91ac1]  flex items-center justify-center">
-                      <Play className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 text-white ml-0.5 xs:ml-1" />
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#ffffff] to-[#e7e2e2] transition-opacity duration-500 " />
+                    <div className="relative cursor-pointer h-full w-full rounded-full bg-gradient-to-r from-[#e63ca3] to-[#a91ac1] flex items-center justify-center">
+                      <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300" />
+                      <Play className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 text-white ml-0.5 xs:ml-1 group-hover/play:scale-110 transition-transform duration-300" />
+                    </div>
+                    <div className="absolute -bottom-4 -right-4 w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 pointer-events-none" style={{ filter: 'drop-shadow(0 0 8px rgba(230, 60, 163, 0.5))' }}>
+                      <GiClick  
+                        className="w-full h-full text-[#ffffff] animate-bounce"
+                        strokeWidth={2.5}
+                      />
                     </div>
                   </motion.div>
-                  {/* <div className="space-y-1 xs:space-y-2 text-center">
-                    <motion.p
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
-                      className="text-lg xs:text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#e63ca3] to-[#a91ac1] bg-clip-text text-transparent"
-                    >
-                      Unlock the Demo
-                    </motion.p>
-                  </div> */}
                 </div>
               </motion.div>
             )}
