@@ -374,7 +374,7 @@ const dummyContent: ServiceItem[] = [
     image: "/features/WhatsApp-Bulk-Marketing_.png",
   },
   {
-    title: "Email Marketing text-md",
+    title: "Email Marketing",
     description: (
       <>
         <p className="mb-4 text-md">

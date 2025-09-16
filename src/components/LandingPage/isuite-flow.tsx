@@ -3,7 +3,7 @@ import { Topic, RadialFlow } from "@/components/ui/radialflow";
 const demoTopics: Topic[] = [
   {
     id: "power-of-isuite",
-    name: "iSuite Software",
+    name: "Website Builder",
     position: { x: 20, y: 16.66 },
     color: "#e63ca3",
     highlighted: true,
